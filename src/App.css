@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 24px;
+  font-size: 18px;
   color: white;
 }
 
@@ -16,4 +16,23 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
+}
+
+input,
+button {
+  background-color: #20232a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+  font-size: large;
+}
+
+button:hover {
+  background-color: #e8e6e3;
+}
+
+button:active {
+  background-color: #14141b;
 }

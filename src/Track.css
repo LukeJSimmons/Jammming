@@ -2,14 +2,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(28, 16, 80);
     padding: 0 15px;
+    margin-top: -20px;
     margin-bottom: 10px;
+    border-bottom: 3px solid #20232a;
+    text-align: left;
 }
 
 .container button {
-    height: 30px;
-    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+    font-size: larger;
+    padding: 0;
 }
 
 .container h4 {

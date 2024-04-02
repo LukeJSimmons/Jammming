@@ -4,22 +4,18 @@ import styles from "./Track.css";
 
 function Track(props) {
     const {track, moveTrack} = props;
-    let inPlaylist = false;
 
     function handleClick() {
-        if (!inPlaylist) {
-            props.moveTrack(track);
-        }
-        
+        props.moveTrack(track);
     }
 
     return (
         <div className="container">
             <div>
                 <h4>{track.name}</h4>
-                <p>{track.artist} | {track.album}</p>
+                <p>{track.artists[0].name} | {track.album.name}</p>
             </div>
-            <button onClick={handleClick}>Add</button>
+            <button onClick={handleClick}>{props.buttonIcon}</button>
         </div>
     );
 }

@@ -10,7 +10,7 @@ function SearchResults(props) {
     return (
         <div>
             <h2>Results</h2>
-            <Tracklist tracks={props.searchResults} moveTrack={addTrack} />
+            <Tracklist tracks={props.searchResults} moveTrack={addTrack} buttonIcon='+' />
         </div>
     );
 }

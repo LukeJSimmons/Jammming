@@ -1,11 +1,21 @@
-import React from 'react';
+import {React, useState} from 'react';
 
 
-function SearchBar() {
+function SearchBar(props) {
+    const [search, setSearch] = useState('');
+
+    function handleChange(event) {
+        setSearch(event.target.value);
+    }
+
+    function handleClick() {
+        props.handleClick(search);
+    }
+    
     return (
         <>
-            <input></input>
-            <button>Search</button>
+            <input onChange={handleChange} value={search}></input>
+            <button onClick={handleClick}>Search</button>
         </>
     );
 }

@@ -1,7 +1,9 @@
 import {React, useState} from "react";
 import {generateId} from "./utilities";
+import styles from './Playlist.css';
 import Tracklist from "./Tracklist";
 import Track from "./Track";
+import UsernameGetter from './UsernameGetter';
 
 
 function Playlist(props) {
@@ -10,13 +12,21 @@ function Playlist(props) {
         props.removeTrack(track);
     }
 
+    function handleChange(event) {
+        props.handleChange(event);
+    }
+
+    function savePlaylist() {
+        props.savePlaylist();
+    }
+
     return (
         <div>
-            <h2>Playlist</h2>
-            <Tracklist tracks={props.playlistTracks} moveTrack={removeTrack} />
-            <input></input>
+            <h2>{props.title ? props.title : 'Playlist Title'}</h2>
+            <Tracklist tracks={props.playlistTracks} moveTrack={removeTrack} buttonIcon='-' />
+            <input onChange={handleChange} value={props.title}></input>
             <br></br>
-            <button>Save to Spotify</button>
+            <button onClick={savePlaylist}>Save to Spotify</button>
         </div>
     );
 }

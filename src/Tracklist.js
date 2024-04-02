@@ -16,7 +16,7 @@ function Tracklist(props) {
     return (
         <div id="container">
             {props.tracks.map((track) => (
-            <Track key={track.id} track={track} moveTrack={moveTrack} />
+            <Track key={track.id} track={track} moveTrack={moveTrack} buttonIcon={props.buttonIcon} />
           ))}
         </div>
     );
