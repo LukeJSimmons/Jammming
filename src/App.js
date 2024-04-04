@@ -10,6 +10,8 @@ import SpotifyTracks from './SpotifyTracks';
 import TokenGetter from './TokenGetter';
 
 function App() {
+  //Adding/Removing Tracks Functions
+
   const [tracks, setTracks] = useState([
       
   ]);
@@ -36,29 +38,21 @@ function handleTitleChange(event) {
   setTitle(event.target.value);
 }
 
-async function savePlaylist() {
-  const user = await getUsername().then(data => data.id);
-  console.log(user);
-  const newPlaylist = [];
-  playlistTracks.forEach((i) => {newPlaylist.push(i.uri)});
-  setPlaylistTracks([]);
+//Search Logic
 
-  const response = await createPlaylist(user);
+const [search, setSearch] = useState('');
 
-  if (response.ok) {
-    alert('LETS GO');
-  } else {
-    alert('FRICK');
-  }
-
-  const jsonResponse = await response.json();
-
-  addTracksToPlaylist(user, jsonResponse.id, newPlaylist);
+function handleSearchChange(event) {
+  setSearch(event.target.value);
 }
 
-const [token, setToken] = useState('');
 
-function handleSearch(search) {
+function handleSearch() {
+  if (!token) {
+    alert('Must be logged in to Spotify')
+    setSearch('');
+    return
+  }
   const accessToken = token;
   const searchQuery = search;
 
@@ -77,6 +71,37 @@ function handleSearch(search) {
       console.error('Error:', error);
   })
 }
+
+//Playlist Saving Functions
+
+async function savePlaylist() {
+  if (!token) {
+    alert('Must be logged in to Spotify')
+    setTitle('');
+    return
+  }
+  const user = await getUsername().then(data => data.id);
+  console.log(user);
+  const newPlaylist = [];
+  playlistTracks.forEach((i) => {newPlaylist.push(i.uri)});
+  setPlaylistTracks([]);
+
+  const response = await createPlaylist(user);
+
+  if (response.ok) {
+    alert('Playlist saved');
+  } else {
+    alert('Failed to save playlist');
+  }
+
+  setTitle('');
+
+  const jsonResponse = await response.json();
+
+  addTracksToPlaylist(user, jsonResponse.id, newPlaylist);
+}
+
+const [token, setToken] = useState('');
 
   function getUsername() {
     const accessToken = token;
@@ -134,7 +159,7 @@ function handleSearch(search) {
       <header className="App-header">
         <TokenGetter token={token} setToken={setToken} />
         <Header />
-        <SearchBar handleClick={handleSearch} />
+        <SearchBar handleClick={handleSearch} handleChange={handleSearchChange} search={search} />
         <div className="flex">
           <SearchResults searchResults={tracks} addTrack={addTrack} />
           <Playlist playlistTracks={playlistTracks} removeTrack={removeTrack} savePlaylist={savePlaylist} handleChange={handleTitleChange} title={title} />

@@ -21,8 +21,8 @@ function Playlist(props) {
     }
 
     return (
-        <div>
-            <h2>{props.title ? props.title : 'Playlist Title'}</h2>
+        <div className="tracklists">
+            <h2>Playlist</h2>
             <Tracklist tracks={props.playlistTracks} moveTrack={removeTrack} buttonIcon='-' />
             <input onChange={handleChange} value={props.title}></input>
             <br></br>

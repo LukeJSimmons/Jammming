@@ -2,19 +2,17 @@ import {React, useState} from 'react';
 
 
 function SearchBar(props) {
-    const [search, setSearch] = useState('');
-
     function handleChange(event) {
-        setSearch(event.target.value);
+        props.handleChange(event);
     }
 
     function handleClick() {
-        props.handleClick(search);
+        props.handleClick();
     }
     
     return (
         <>
-            <input onChange={handleChange} value={search}></input>
+            <input onChange={handleChange} value={props.search}></input>
             <button onClick={handleClick}>Search</button>
         </>
     );

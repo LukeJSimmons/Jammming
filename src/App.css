@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #15191f;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,6 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
+  width: 60%;
 }
 
 input,
@@ -27,6 +28,8 @@ button {
   padding: 5px;
   margin: 5px;
   font-size: large;
+  text-wrap: wrap;
+  max-width: 10rem;
 }
 
 button:hover {
@@ -35,4 +38,27 @@ button:hover {
 
 button:active {
   background-color: #14141b;
+}
+
+.tracklists {
+  min-height: 200px;
+  width: 50%;
+  background-color: #282c34;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.tracklists h2 {
+  text-wrap: wrap;
+}
+
+.tracklists input {
+  width: 75%;
+}
+
+@media screen and (max-width: 1024px) {
+  .flex {
+    width: 95%;
+  }
 }

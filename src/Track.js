@@ -13,7 +13,7 @@ function Track(props) {
         <div className="container">
             <div>
                 <h4>{track.name}</h4>
-                <p>{track.artists[0].name} | {track.album.name}</p>
+                <p>{track.artists[0].name}<span id="album"> | {track.album.name}</span></p>
             </div>
             <button onClick={handleClick}>{props.buttonIcon}</button>
         </div>

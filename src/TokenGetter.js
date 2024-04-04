@@ -17,17 +17,18 @@ function TokenGetter(props) {
     };
 
     let hash = window.location.hash;
-    let sections = hash.split(/[=&]/);
+    if (hash) {
+        const sections = hash.split(/[=&]/);
 
-    props.setToken(sections[1]);
+        props.setToken(sections[1]);
 
-    function handleChange(event) {
-        props.setToken(event.target.value)
+        window.location.hash = '';
     }
+    
 
     return (
     <div>
-        <button onClick={handleLogin}>Login with Spotify</button>
+        <button onClick={handleLogin}>{props.token ? 'Logged In' : 'Login with Spotify'}</button>
     </div>
     );
 };

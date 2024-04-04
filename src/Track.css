@@ -13,13 +13,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
-    width: 40px;
-    border-radius: 30px;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 3rem;
     font-size: larger;
-    padding: 0;
+    padding: 1rem;
 }
 
 .container h4 {
     margin-bottom: -10px;
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        flex-direction: column;
+    }
+    .container button {
+        margin-top: -0.5rem;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    #album {
+        display: none;
+    }
 }
